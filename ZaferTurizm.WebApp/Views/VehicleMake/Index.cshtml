@@ -1,0 +1,61 @@
+﻿@using ZaferTurizm.Dtos;
+
+@model IEnumerable<VehicleMakeDto>
+
+<h1>
+    Markalar
+</h1>
+
+<div class="row">
+    <div class="col-12 col-sm-8 col-md-6 ">
+        <table class="table table-striped">
+            <thead>
+                <tr> <!--TABLE ROW-->
+                    <th>Id</th> <!--TABLE HEADING-->
+                    <th>Marka Adı</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach(var item in Model)
+                {
+                    <!--
+                        dynamic tipi ile kodlama yapmaya DUCK TYPING denir.
+                        duck typing tekniği ile View içerisinde kodlama yapmak biraz zor
+                        olabileceği için sayfanın yukarısında model tanımı daha iyidir.
+                    -->
+                <tr>
+                    <td>@item.Id</td>  <!--TABLE DATA-->
+                   <td>@item.Name</td>
+                   <td>
+                       <a class="btn btn-link" href="/VehicleMake/Update/@item.Id">Düzenle</a>
+                       <form method="post" asp-controller="VehicleMake" asp-action="Delete" class="d-inline">
+                           <input type="hidden" name="Id" value="@item.Id">
+                           <button class="btn btn-link">Sil</button>
+                       </form>
+                   </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        let formElements = document.getElementsByTagName('form');
+
+        for(let i=0; i<formElements.length;i++)
+        {
+            formElements[i].addEventListener('submit',function (e) {
+
+             let confirmed =   confirm("Dikkat! bu kayıt silinecek, devam etmek istiyor musunuz");
+
+             if(!confirmed){
+                 e.preventDefault();
+             }
+            }
+        }
+    </script>
+}
