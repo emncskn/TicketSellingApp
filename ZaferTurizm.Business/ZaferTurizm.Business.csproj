@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,10 @@
   <ItemGroup>
     <ProjectReference Include="..\ZaferTurizm.DataAccess\ZaferTurizm.DataAccess.csproj" />
     <ProjectReference Include="..\ZaferTurizm\ZaferTurizm.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\VehicleManagers\" />
   </ItemGroup>
 
 </Project>

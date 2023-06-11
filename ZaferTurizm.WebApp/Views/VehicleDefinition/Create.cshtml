@@ -1,74 +1,77 @@
-﻿
-@model VehicleDefinitionDto
+﻿@model VehicleDefinitonDto
 
-<h1>
-    Yeni Araç Modeli
-</h1>
+<h1>Yeni Araç Modeli</h1>
 <div class="row">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-    <form method="post" asp-controller="VehicleDefinition" asp-action="Create">
-    <div class="mb-2">
-        <label class="form-label">Marka</label>
-        <select asp-items="(SelectList)ViewBag.VehicleMakeSelectList" id="vehicle_makes" class="form-select"></select>
-    </div>
-
-    <div class="mb-2">
-        <label class="form-label" asp-for="VehicleModelId">Markası</label>
-            <select asp-for="VehicleModelId" class="form-select"></select>
-
-    </div>
-
-    <div class="mb-2">
-        <label class="form-label" asp-for="Year">Yıl</label>
-        <input type="number" asp-for="Year" class="form-control" />
-       
-    </div>
-    <div class="mb-2 text-end">
-                <button class="btn btn-outline-success">
+    <div class="col-12 col-sm-8 col-md-6">
+        <form method="post" asp-controller="VehicleDefinition" asp-action="Create">
+            <div>
+                <label class="form-label">Marka Adı</label>
+                <select asp-items="(SelectList)ViewBag.MakeList" id="vehicle_makes" class="form-select w-100"></select>
+                @*@Html.TextBoxFor(m=>m.Name,new {@class="form-control"})*@
+            </div> @*asp-itemsa SelectListitem göndermen gerekiyor*@
+            <div class="mt-2">
+                <label class="form-label">Model Adı</label>
+                <select class="form-select w-100" asp-for=VehicleModelId ></select>
+                @*@Html.DropDownListFor(m=>m.Id,(SelectList)ViewBag.VehicleMakeList,new {@class="form-control"}) @*For yazınca modelden seçebiliyoruz modelden*@
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-success">
                     Kaydet
                 </button>
+            </div>
+
+        </form>
     </div>
 
-
-    </form>
-    </div>
 </div>
-
-
+<!--
+    AJAX
+    Asynchronous Javascript And XML
+    Asynchronous Javascript And XML
+-->
 @section Scripts
-{
+    {
     <script>
-        //browserla değil javascript le asenkron request almaya yarar ajax.
-      //let vehicleMakesSelect =  document.getElementById('vehicle_makes');
-      //asenkron javascript xml = AJAX olay başka bir pipeline la paralel bi yol oluşturmak
+        //let vehicleMakesSelect=document.getElementById('vehicle_makes');
 
-      let vehicleMakesSelect = document.querySelector('#vehicle_makes');
+        let vehicleMakesSelect = document.querySelector('#vehicle_makes');
+        vehicleMakesSelect.addEventListener('change', function () {
 
-      vehicleMakesSelect.addEventListener('change',function () {
+            // Elementin kendisi ==>this
 
-         
-         $.ajax({
-             url :`/VehicleModel/GetVehicleModelsByMakeId?vehicleMakeId = ${this.value}`,
-             method: 'get'
-             success: function (vehicleModels) {
-                 
-                 var vehicleModelsSelect = document.querySelector('#VehicleModelId');
-                 vehicleModelsSelect.innerHTML = null;
+            console.log(this.value)
 
-                 for (let vehicleModel of vehicleModels){
+            $.ajax({
+                    url: `/VehicleModel/GetVehicleModelsById?vehicleMakeId=${this.value}`,
+                    method: 'get',
+                    success: function (vehicleModels) {
+                    
+                    var vehicleModelsSelect =document.querySelector('#VehicleModelId');
+                    vehicleModelsSelect.innerHTML=null;
+                    for(let vehicleModel of vehicleModels) {
 
-                     let optionElement = document.createElement('option');
-                     optionElement.value = vehicleModel.id;
-                     optionElement.innerText =vehicleModel.name;
+                        let optionElement = document.createElement('option');
+                        optionElement.value=vehicleModel.id;
+                        optionElement.innerText=vehicleModel.name;
+                        vehicleModelsSelect.appendChild(optionElement);
 
-                     vehicleModelsSelect.appendChild(optionElement);
-                 }
-             }
-         });
-      });
+                    }
 
+                }
+                
+
+            });
+        })
     </script>
-    
-}
 
+    @*<script>
+
+        //Literal Objects
+        let player = {
+            firstName: 'Tsubasa',
+            lastName: 'Ozora',
+
+        }
+    </script>*@
+}
 

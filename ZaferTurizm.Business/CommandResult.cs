@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace ZaferTurizm.Business
 {
+    
     public class CommandResult
     {
         private const string DefaultSuccessMessage = "İşlem başarılı";
         private const string DefaultFailureMessage = "İşlem başarısız";
+
+        //
         public bool IsSuccess { get;private set; }
-        public string Message { get; private set; } //private yaparak set yetkisini elime aldım.
+        public string Message { get;private set; }
 
-        //Factory Pattern :sürekli aynı nesneyi üretiyorsan kullanılabilir.
-
+        // Factory Pattern -> nesne üretici, basma kalıp şekilde nesne üretmek.
         public static CommandResult Success()
         {
             return Success(DefaultSuccessMessage);
         }
-
         public static CommandResult Success(string message)
         {
             return new CommandResult
@@ -28,12 +29,10 @@ namespace ZaferTurizm.Business
                 Message = message
             };
         }
-
         public static CommandResult Failure()
         {
             return Failure(DefaultFailureMessage);
         }
-
         public static CommandResult Failure(string message)
         {
             return new CommandResult
@@ -42,5 +41,6 @@ namespace ZaferTurizm.Business
                 Message = message
             };
         }
+
     }
 }

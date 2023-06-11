@@ -9,17 +9,29 @@ using ZaferTurizm.Domain;
 
 namespace ZaferTurizm.DataAccess.Configurations
 {
-    internal class VehicleModelConfiguration:IEntityTypeConfiguration<VehicleModel>
+    public class VehicleModelConfiguration : IEntityTypeConfiguration<VehicleModel>
     {
         public void Configure(EntityTypeBuilder<VehicleModel> builder)
-
         {
-            builder.ToTable(nameof(VehicleModel));
+            builder.ToTable("VehicleModel");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).IsRequired().HasColumnType("varchar(50)");
+            builder.Property(x=>x.Name).IsRequired().HasColumnType("varchar(50)");
+            builder.HasOne(vmo => vmo.VehicleMake)
+                   .WithMany() //markada ıcollectinon models olsa doldururduk parantezi
+                   .HasForeignKey(vmo => vmo.VehicleMakeId)
+                   .OnDelete(DeleteBehavior.NoAction);
+            //builder.HasData(
+            //    new VehicleModel()
+            //                       { Id = 1, VehicleMakeId = 1, Name = "Travego" },
+            //    new VehicleModel() { Id = 2, VehicleMakeId = 1, Name = "403" },
+            //    new VehicleModel() { Id = 3, VehicleMakeId = 3, Name = "Tourismo" },
+            //    new VehicleModel() { Id = 4, VehicleMakeId = 2, Name = "Lions" },
+            //    new VehicleModel() { Id = 5, VehicleMakeId = 4, Name = "Fortuna" },
+            //    new VehicleModel() { Id = 6, VehicleMakeId = 6, Name = "Sl" }
+            // Ben zaten bunları yapmıştım
 
-            builder.HasOne(model => model.VehicleMake).WithMany()
-                .HasForeignKey(model => model.VehicleMakeId).OnDelete(DeleteBehavior.NoAction);
+
+                
         }
     }
 }

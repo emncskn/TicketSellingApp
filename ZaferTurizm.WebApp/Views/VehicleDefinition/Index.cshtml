@@ -1,49 +1,54 @@
-﻿@using ZaferTurizm.Dtos;
-@model IEnumerable<VehicleDefinitionSummary>
+﻿@model IEnumerable<VehicleDefinitonSummary>
 
-
-<h1>Araç Tanımları</h1>
+<h1>Modeller</h1>
 
 <div class="row">
-    <div class="col-12 col-sm-8 ">
+    <div class="col-12 col-sm-8 col-md-6">
         <div class="text-end mb-2">
             <a asp-controller="VehicleDefinition" asp-action="Create" class="btn btn-primary btn-sm">Yeni Ekle</a>
-
         </div>
-        <table class="table table-striped">
+        <table class="table table striped">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>#</th>
+                    <th>Marka Adı</th>
                     <th>Model Adı</th>
-                    <th>Markası</th>
                     <th>Yılı</th>
-                    <th>Koltuk Sayısı</th>
-                    <th>WC</th>
-                    <th>WİFİ</th>
-                    <th></th>
+                    <th>Koltuk Numarası</th>
+                    <th>Tuvalet</th>
+                    <th>Wifi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var vehicleDefinition in Model)
+                @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@vehicleDefinition.Id</td>
-                        <td>@vehicleDefinition.VehicleMakeName</td>
-                        <td>@vehicleDefinition.VehicleModelName</td>
-                        <td>@vehicleDefinition.Year</td>
-                        <td>@vehicleDefinition.SeatCount</td>
-                        <td>@vehicleDefinition.HasToiletString</td>
-                        <td>@vehicleDefinition.HasWifiString</td>
+                        <td>@item.Id</td>
+                        <td>@item.VehicleMakeName</td>
+                        <td>@item.VehicleModelName</td>
+                        <td>@item.Year</td>
+                        <td>@item.SeatCount</td>
+                        <td>@item.HasToiletString</td>
+                        <td>@item.HasWifiString</td>
                         <td>
+                            <div class="btn-group">
+                                @*Bu yola Tag Helpers denir.. daha yaygın*@
+                                <a class="btn btn-danger" asp-controller="VehicleDefinition" asp-action="Delete" asp-route-id="@item.Id">Sil</a> @*İd benim parametre adım*@
 
-                            <a asp-controller="VehicleDefinition" asp-action="Update" asp-route-id="@vehicleDefinition.Id">Düzenle</a>
-                            <a href="#">Sil</a>
+                                @*@Html.ActionLink("Sil","Delete","VehicleModel", new {id=item.Id}) --> Bu yol html helpers *@
+                                <a class="btn btn-warning d-inline-block ms-2" asp-controller="VehicleDefinition" asp-action="Edit" asp-route-id="@item.Id">Güncelle</a>
+
+
+                            </div>
+
                         </td>
                     </tr>
                 }
-
             </tbody>
         </table>
     </div>
 </div>
+
+
+
 

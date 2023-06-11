@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "ZaferTurizm/1.0.0": {
+        "dependencies": {
+          "ZaferTurizm.Domain": "1.0.0"
+        },
         "runtime": {
           "ZaferTurizm.dll": {}
+        }
+      },
+      "ZaferTurizm.Domain/1.0.0": {
+        "runtime": {
+          "ZaferTurizm.Domain.dll": {}
         }
       }
     }
   },
   "libraries": {
     "ZaferTurizm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ZaferTurizm.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

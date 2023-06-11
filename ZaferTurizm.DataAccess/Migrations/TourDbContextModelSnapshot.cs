@@ -16,10 +16,32 @@ namespace ZaferTurizm.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("ZaferTurizm.Domain.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("PlateNumber")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<int>("VehicleDefinitionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleDefinitionId");
+
+                    b.ToTable("Vehicle", (string)null);
+                });
 
             modelBuilder.Entity("ZaferTurizm.Domain.VehicleDefinition", b =>
                 {
@@ -41,8 +63,10 @@ namespace ZaferTurizm.DataAccess.Migrations
                     b.Property<int>("VehicleModelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                    b.Property<string>("Year")
+                        .IsRequired()
+                        .HasColumnType("varchar(4)")
+                        .HasColumnName("AracınUretimYili");
 
                     b.HasKey("Id");
 
@@ -54,20 +78,29 @@ namespace ZaferTurizm.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            HasToilet = false,
-                            HasWifi = true,
-                            SeatCount = 48,
-                            VehicleModelId = 1,
-                            Year = 2020
+                            HasToilet = true,
+                            HasWifi = false,
+                            SeatCount = 25,
+                            VehicleModelId = 20,
+                            Year = "2020"
                         },
                         new
                         {
                             Id = 2,
-                            HasToilet = false,
+                            HasToilet = true,
                             HasWifi = true,
                             SeatCount = 48,
-                            VehicleModelId = 2,
-                            Year = 2020
+                            VehicleModelId = 20,
+                            Year = "2022"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            HasToilet = true,
+                            HasWifi = true,
+                            SeatCount = 52,
+                            VehicleModelId = 23,
+                            Year = "2023"
                         });
                 });
 
@@ -139,40 +172,51 @@ namespace ZaferTurizm.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Name = "Travego",
+                            Id = 20,
+                            Name = "Focus",
                             VehicleMakeId = 1
                         },
                         new
                         {
-                            Id = 2,
-                            Name = "403",
+                            Id = 21,
+                            Name = "Octavia",
                             VehicleMakeId = 1
                         },
                         new
                         {
-                            Id = 3,
-                            Name = "Tourismo",
+                            Id = 22,
+                            Name = "404",
                             VehicleMakeId = 1
                         },
                         new
                         {
-                            Id = 4,
-                            Name = "Lions",
-                            VehicleMakeId = 2
+                            Id = 23,
+                            Name = "Arda",
+                            VehicleMakeId = 1
                         },
                         new
                         {
-                            Id = 5,
-                            Name = "Fortuna",
-                            VehicleMakeId = 2
+                            Id = 24,
+                            Name = "BBara",
+                            VehicleMakeId = 1
                         },
                         new
                         {
-                            Id = 6,
-                            Name = "SL",
-                            VehicleMakeId = 2
+                            Id = 25,
+                            Name = "Merdo",
+                            VehicleMakeId = 1
                         });
+                });
+
+            modelBuilder.Entity("ZaferTurizm.Domain.Vehicle", b =>
+                {
+                    b.HasOne("ZaferTurizm.Domain.VehicleDefinition", "VehicleDefinition")
+                        .WithMany()
+                        .HasForeignKey("VehicleDefinitionId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("VehicleDefinition");
                 });
 
             modelBuilder.Entity("ZaferTurizm.Domain.VehicleDefinition", b =>

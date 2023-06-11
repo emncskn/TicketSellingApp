@@ -1,21 +1,22 @@
 using System.Diagnostics;
 using ZaferTurizm.Business.Services;
+using ZaferTurizm.Business.Services.VehicleDefinitionManagers;
+using ZaferTurizm.Business.Services.VehicleMakeManagers;
+using ZaferTurizm.Business.Services.VehicleModelManagers;
 using ZaferTurizm.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-Trace.Listeners.Add(new TextWriterTraceListener("error-logs.tx"));
+Trace.Listeners.Add(new TextWriterTraceListener("error-logs.txt"));
 Trace.AutoFlush = true;
 
-var services = builder.Services;
-services.AddTransient<IVehicleMakeService,VehicleMakeService >();
-services.AddTransient<IVehicleModelService,VehicleModelService >();
-services.AddTransient<IVehicleDefinitionService,VehicleDefinitionService >();
-services.AddDbContext<TourDbContext>();
-
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IVehicleMakeService, VehicleMakeService>();
+builder.Services.AddTransient<IVehicleModelService, VehicleModelService>();
+builder.Services.AddTransient<IVehicleDefinitonService,VehicleDefinitionService>();
+builder.Services.AddDbContext<TourDbContext>();
+    
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj": {}
+    "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj": {
+    "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj",
         "projectName": "ZaferTurizm.Business",
-        "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj",
+        "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj",
         "packagesPath": "C:\\Users\\Hakan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Business\\obj\\",
+        "outputPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj"
+              "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj"
               },
-              "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm\\ZaferTurizm.csproj": {
-                "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm\\ZaferTurizm.csproj"
+              "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj": {
+                "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj"
               }
             }
           }
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj": {
+    "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj",
         "projectName": "ZaferTurizm.DataAccess",
-        "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.DataAccess\\ZaferTurizm.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Hakan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -98,8 +98,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj": {
-                "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj"
+              "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj": {
+                "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj"
               }
             }
           }
@@ -116,23 +116,17 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.16, )"
+              "version": "[6.0.15, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.16, )"
+              "version": "[6.0.15, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.16, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.16, )"
+              "version": "[6.0.15, )"
             }
           },
           "imports": [
@@ -155,14 +149,14 @@
         }
       }
     },
-    "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj": {
+    "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj",
         "projectName": "ZaferTurizm.Domain",
-        "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj",
+        "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj",
         "packagesPath": "C:\\Users\\Hakan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -214,14 +208,14 @@
         }
       }
     },
-    "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj": {
+    "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj",
         "projectName": "ZaferTurizm.WebApp",
-        "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj",
+        "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.WebApp\\ZaferTurizm.WebApp.csproj",
         "packagesPath": "C:\\Users\\Hakan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.WebApp\\obj\\",
+        "outputPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -242,11 +236,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj": {
-                "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj"
+              "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj": {
+                "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Business\\ZaferTurizm.Business.csproj"
               },
-              "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj": {
-                "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj"
+              "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj": {
+                "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj"
               }
             }
           }
@@ -283,14 +277,14 @@
         }
       }
     },
-    "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm\\ZaferTurizm.csproj": {
+    "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm\\ZaferTurizm.csproj",
+        "projectUniqueName": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj",
         "projectName": "ZaferTurizm",
-        "projectPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm\\ZaferTurizm.csproj",
+        "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj",
         "packagesPath": "C:\\Users\\Hakan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hakan\\Desktop\\ZaferTurizm\\ZaferTurizm\\obj\\",
+        "outputPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -310,7 +304,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj": {
+                "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm.Domain\\ZaferTurizm.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

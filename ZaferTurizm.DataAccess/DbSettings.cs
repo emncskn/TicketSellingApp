@@ -10,9 +10,9 @@ namespace ZaferTurizm.DataAccess
     {
         
         
-            public const string ConnectionLaptopStringSettings = @"Server=DESKTOP-S7P89NR\MSSQLSERVER01;Database= ZaferTurizm;
+            public const string ConnectionLaptopStringSettings = @"Server=DESKTOP-TJT2JL4;Database= ZaferTurizmDb;
             Integrated Security=true; TrustServerCertificate=True";
-            public const string ConnectionPcStringSettings = @"Server=DESKTOP-SH3EO74;Database= ZaferTurizm;
+            public const string ConnectionPcStringSettings = @"Server=DESKTOP-TJT2JL4;Database= ZaferTurizmDb;
             Integrated Security=true; TrustServerCertificate=True";
             public const string ProductionStringSettings = "";
 

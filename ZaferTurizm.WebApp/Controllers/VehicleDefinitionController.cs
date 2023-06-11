@@ -1,62 +1,68 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ZaferTurizm.Business.Services;
+using ZaferTurizm.Business.Services.VehicleDefinitionManagers;
+using ZaferTurizm.Business.Services.VehicleMakeManagers;
+using ZaferTurizm.Business.Services.VehicleModelManagers;
+using ZaferTurizm.DTOs;
 
 namespace ZaferTurizm.WebApp.Controllers
 {
     public class VehicleDefinitionController : Controller
     {
-        private readonly IVehicleDefinitionService _vehicleDefinitionService;
-        private readonly IVehicleMakeService _vehicleMakeService;
+        private readonly IVehicleDefinitonService _vehicleDefinitonService;
         private readonly IVehicleModelService _vehicleModelService;
-
-        public VehicleDefinitionController(IVehicleDefinitionService vehicleDefinitionService,
-            IVehicleMakeService vehicleMakeService,
-            IVehicleModelService vehicleModelService)
+        private readonly IVehicleMakeService _vehicleMakeService;
+        public VehicleDefinitionController(IVehicleDefinitonService vehicleDefinitonService, IVehicleModelService vehicleModelService, IVehicleMakeService vehicleMakeService) 
         {
-            _vehicleDefinitionService = vehicleDefinitionService;
-            _vehicleMakeService = vehicleMakeService;
+            _vehicleDefinitonService = vehicleDefinitonService;
             _vehicleModelService = vehicleModelService;
+            _vehicleMakeService = vehicleMakeService;
+            
         }
+
+        
+
 
         public IActionResult Index()
         {
-            var summaries = _vehicleDefinitionService.GetSummaries();
-            return View(summaries);
+            return View(_vehicleDefinitonService.GetAllSummaries());
         }
-        public IActionResult Create()
+        public IActionResult Create() 
         {
-            var vehicleMakes = _vehicleMakeService.GetAll();
-            ViewBag.VehicleMakeSelectList = new SelectList(vehicleMakes, "Id", "Name");
-           
+            var makeList = _vehicleMakeService.GetAll();
+            ViewBag.MakeList = new SelectList(makeList,"Id","Name");
+            var modelList = _vehicleModelService.GetAll();
+            ViewBag.ModelList = new SelectList(modelList, "Id", "Name");
+            
             return View();
         }
-
-        public IActionResult Update(int id)
+        //[HttpPost]
+        //public IActionResult Create() 
+        //{
+                     
+        //}
+        public IActionResult Edit(int id)
         {
-            var vehicleDefinition = _vehicleDefinitionService.GetById(id);
-                
-            if (vehicleDefinition == null)
+            var vd = _vehicleDefinitonService.GetById(id);
+            if (vd==null)
             {
                 return NotFound();
             }
 
-            var allVehicleMakes = _vehicleMakeService.GetAll();
-            ViewBag.VehicleMakeSelectList = new SelectList(
-                allVehicleMakes,
-                "Id",
-                "Name"
-                );
+            var makeList = _vehicleMakeService.GetAll();
+            ViewBag.MakeList = new SelectList(
+                makeList, 
+                "Id", 
+                "Name",
+                vd.VehicleMakeId);
 
-            var vehicleModelsOfMake = _vehicleModelService.GetByMakeId(vehicleDefinition.VehicleMakeId);
-            ViewBag.VehicleModelSelectList =
-                new SelectList(vehicleModelsOfMake, "Id", "Name");
+            var models = _vehicleModelService.GetByMakeId(vd.VehicleMakeId);
+            ViewBag.VehicleModelSelectList = new SelectList(models, "Id", "Name");
 
-            //var allVehicleModels = _vehicleModelService.GetAll();
-            //ViewBag.VehicleModelsSelectList = new SelectList(allVehicleModels, "Id", "Name");
 
-            return View(vehicleDefinition); 
+
+
+            return View(vd);
         }
-
     }
 }

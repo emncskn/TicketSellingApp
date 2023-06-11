@@ -1,116 +1,164 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ZaferTurizm.Business.Services;
-using ZaferTurizm.Domain;
-using ZaferTurizm.Dtos;
+using ZaferTurizm.Business.Services.VehicleMakeManagers;
+using ZaferTurizm.DTOs;
 using ZaferTurizm.WebApp.Models;
 
 namespace ZaferTurizm.WebApp.Controllers
 {
     public class VehicleMakeController : Controller
     {
-        // /VehicleMake/Index
-        // /VehicleMake url leri ile erişilebilir.
-
         private readonly IVehicleMakeService _vehicleMakeService;
+
         public VehicleMakeController(IVehicleMakeService vehicleMakeService)
         {
             _vehicleMakeService = vehicleMakeService;
         }
+
         public IActionResult Index()
         {
             var vehicleMakes = _vehicleMakeService.GetAll();
-
             return View(vehicleMakes);
         }
-        public IActionResult Create()
-        { 
-             return View();
-        }
-
-        //http get tipindeki requestler de veriler; url nin devamında Query String olarak sunucuya iletilir.
-        //query stringle veri taşıdığında gereksiz ekleme yaşanabilir ve güvensizdir.(http get)
-        //http post (hatta PUT ve DELETE Dahil) tipindeki requestlerde veriler requestin body bölümünde
-        //(yani gömülü şekilde) sunucuya iletilir.
-
-        //public IActionResult CreateSubmit(IFormCollection formCollection) //2.yola ait 
-
-        //bir action metodu [HttpPost],[HttpGet] şeklindeki attributelerden bir tanesini eklemek,
-        //o action metodun yalnızca o http metodu ile çalışacağını bildirmek olur.
-        //yani diğer http metotları ile aynı adrese açılmış requestlere cevap verme anlamına gelir.
-
-        //kısacası, createsubmit action ını yalnızca post requestlere cevap ver şeklinde kısıtladık.
-        [HttpPost]
-
-
-        //dom tamamen yüklendikten sonra script kodları okunur o yüzden sayfa sonuna js kodları eklenir.
-        //elementi bulamama gibi bir durum yaşanmaması için...
-        //public IActionResult CreateSubmit(string marka_adi)
-        public IActionResult CreateSubmit(MarkaViewModel viewModel)
+        public IActionResult Create() 
         {
-            //  string vehicleMakeName = HttpContext.Request.Form["marka_adi"];
-            //input name ile bu kısım key-value ikilisini oluşturuyor. Trick burda.
-
-
-            // string vehicleMakeName = formCollection["marka_adi"]; //2. bir yol
-
-            string vehicleMakeName = viewModel.Marka_Adi;
+            return View();
+        }
+        //inputlar için name attribute u çok önemli.. sadece bununla httpye veriyi atabiliyoruz.
+        //sadece name ile bile kayıt yapabiliyoruz
+        //formun action olması önemli
+        //buttonun submit olması
+        [HttpPost]
+        public IActionResult CreateVehicleMake(MarkaViewModel markaViewModel) 
+        // IFormCollection ile de verileri tutabilirdik, name yardımıyla
+        // çekebilirdik.
+        // input name i ile yazılan parametre aynıysa eşleme yapabiliyor
+        // marka_adi string..
+        // Http get tipindeki requestlerde veriler URLin devamında Query String
+        // olarak sunucuya iletilir
+        // Örn : VehicleMake/Create?marka_adi=Isuzu
+        // Http Post (put ve delete dahil) tipindeki requestlerde veriler Requestin BODY bölümünde (
+        // (yani gömülü şekilde) sunucya iletilir
+        // get isteği Veri cevabı almak için kullanılmalı(get yöntemi ile ekleme yapmak sakıncalı)
+        {
+            string vm = markaViewModel.Marka_Adi;
             var vehicleMakeDto = new VehicleMakeDto()
             {
-                Name = vehicleMakeName
+                Name = vm
             };
-
             var result = _vehicleMakeService.Create(vehicleMakeDto);
-            if (result.IsSuccess)
-            {
-              return  RedirectToAction("Index");
-            }
-            else
-            {
-                return Ok();
-            }
-        }
-
-        public IActionResult Edit(int id)
-        {
-
-            var vehicleMakeDto = _vehicleMakeService.GetById(id);
-            if (vehicleMakeDto != null)
-            {
-                return View(vehicleMakeDto);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
-        [HttpPost]
-        public IActionResult Edit(VehicleMakeDto model)
-        {
-            var result = _vehicleMakeService.Update(model);
+            //if (result.IsSuccess)
+            //{
+            //    return Json(result.Message);
+            //}
+            //else
+            //{
+            //    retu
+            //}
             if (result.IsSuccess)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(model);
+                return Ok();
             }
         }
+        //Attributeler eksta meta bilgi sağlamamızı sağlar.
 
+        //Bir action üstüne [HttpPost] gibi Attribiteların eklenmesi , o acition metodun YALNIZCA O HTTP
+        //METODU İLE ÇALIŞACAĞONI bildirmek olur. Yani diğer Http metotları ile aynı adrese açılmış Requestlere 
+        //CEVAP VERME anlamına gelir.
+        //KIsacası, Create action'ını YALNIZCA POST REQUESTLERE CEVAP VER şeklinde kısıtlamış olduk.
+        
+        //Sadece Post tipindeki requestlere cevap veririm. Düzensiz veri eklemenin (bad request) 
+        // önüne geçmek için.
+        
+        
+        //http ile ilgili bilgileri httpcontext içine gider --> ilk bilgilerden
+        
+            //Http status..
+            //200 -> ok.. başarılı
+            //3.. -> redirection hataları
+            //404 -> not found kullanıcı hatası içerenler // Unauthorized
+            //500 -> developer hataları // internal server error
+        public IActionResult Update(int id)
+        {
+            var findedMarka =_vehicleMakeService.GetById(id);
+            if (findedMarka != null) 
+            { 
+                return View(findedMarka); 
+            }
+            else 
+            {
+                return NotFound(); 
+            }
+            
+        }
+        [HttpPost]
+        public IActionResult Update(VehicleMakeDto vehicleMakeDto)
+        {
+            var result = _vehicleMakeService.Update(vehicleMakeDto);
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Ok();        
+            }
+            
+        }
+        //public IActionResult Delete(int id)
+        //{
+            
+        //    if (id == 0)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+        //    var result = _vehicleMakeService.Delete(id); 
+        //    if (result.IsSuccess)
+        //    {
+        //        return RedirectToAction("Index");
+        //    } 
+        //    else
+        //    {
+        //        return NotFound();
+        //    }
+
+            
+        //}
         [HttpPost]
         public IActionResult Delete(int id)
         {
+
+            if (id == 0)
+            {
+                return RedirectToAction("Index");
+            }
             var result = _vehicleMakeService.Delete(id);
             if (result.IsSuccess)
             {
-              return  RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             else
             {
                 return NotFound();
             }
-        }
-       
 
+
+        }
     }
 }
+
+
+
+
+        
+
+
+
+
+
+
+
+

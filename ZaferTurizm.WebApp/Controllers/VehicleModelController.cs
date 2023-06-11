@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ZaferTurizm.Business.Services;
-using ZaferTurizm.Dtos;
+using System.Reflection.Metadata.Ecma335;
+using ZaferTurizm.Business.Services.VehicleMakeManagers;
+using ZaferTurizm.Business.Services.VehicleModelManagers;
+using ZaferTurizm.Domain;
+using ZaferTurizm.DTOs;
 
 namespace ZaferTurizm.WebApp.Controllers
 {
@@ -9,47 +12,94 @@ namespace ZaferTurizm.WebApp.Controllers
     {
         private readonly IVehicleModelService _vehicleModelService;
         private readonly IVehicleMakeService _vehicleMakeService;
-        public VehicleModelController(IVehicleModelService vehicleModelService,
+
+        public VehicleModelController(
+            IVehicleModelService vehicleModelService,
             IVehicleMakeService vehicleMakeService)
         {
             _vehicleModelService = vehicleModelService;
             _vehicleMakeService = vehicleMakeService;
         }
-        public IActionResult Index()
-        {
-            var vehicleModelSummaries = _vehicleModelService.GetSummaries();
 
-            return View(vehicleModelSummaries);
-        }
         public IActionResult Create()
+
         {
             var vehicleMakes = _vehicleMakeService.GetAll();
-           // ViewBag.VehicleMakes = vehicleMakes;
+            ViewBag.VehicleMakes = vehicleMakes;
             ViewBag.VehicleMakeSelectList = new SelectList(vehicleMakes, "Id", "Name");
+
             return View();
         }
-
-        public IActionResult Create(VehicleModelDto vehicleModel)
+        [HttpPost]
+        public IActionResult Create(VehicleModelDto vmo)
         {
-            var result = _vehicleModelService.Create(vehicleModel);
-
+           var result = _vehicleModelService.Create(vmo);
             if (result.IsSuccess)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(vehicleModel);
+                return View(new VehicleModelDto());
             }
+        }
+        public IActionResult Index()
+        {
+            
+            return View(_vehicleModelService.GetAllSummaries());
+        }
+        public IActionResult Delete(int id) 
+        {
+            if (id==0)
+            {
+                return Ok();
+            }
+            var result = _vehicleModelService.Delete(id);
+            //if (result.IsSuccess)  return RedirectToAction("Index");
+            //else
+            //{
+            //    ViewBag.msg =result.Message; 
+            //    return RedirectToAction("Index");
+            //} 
+            return Json(result.Message);
 
         }
-
-        public IActionResult GetVehicleModelsById(int vehicleMakesId)
+        public IActionResult Edit(int id)
         {
-            var allVehicleModels = _vehicleModelService.GetAll();
-            var vehicleModelsofMake = allVehicleModels.Where(model => model.VehicleMakeId == vehicleMakesId);
+            var vehicleMakes = _vehicleMakeService.GetAll();
+            var vehModel = _vehicleModelService.GetById(id);
+          
 
-            return Json(vehicleModelsofMake);
+            ViewBag.VehicleMakeSelectList = new SelectList(vehicleMakes, "Id", "Name");
+
+            return View(vehModel);
+        }
+        [HttpPost]
+        public IActionResult Edit(VehicleModelDto vmo)
+        {
+            var result = _vehicleModelService.Update(vmo);
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("Index");
+            }
+
+            else 
+            {
+
+                var vehicleMakes = _vehicleMakeService.GetAll();
+                ViewBag.VehicleMakeSelectList = new SelectList(vehicleMakes, "Id", "Name");
+                return View(vmo);
+
+            }
+
+            
+            
+        }
+        public IActionResult GetVehicleModelsById(int vehicleMakeId)
+        {
+            
+            var modelsByVehiclesId = _vehicleModelService.GetByMakeId(vehicleMakeId);
+            return Json(modelsByVehiclesId);
         }
     }
 }

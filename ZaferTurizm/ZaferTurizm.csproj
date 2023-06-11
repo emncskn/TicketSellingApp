@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ZaferTurizm.Domain\ZaferTurizm.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

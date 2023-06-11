@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZaferTurizm.Domain;
 
-namespace ZaferTurizm.Dtos
+namespace ZaferTurizm.DTOs
 {
     public class VehicleModelDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int VehicleMakeId { get; set; }
+        
     }
 }
