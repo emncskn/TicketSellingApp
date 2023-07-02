@@ -1,102 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ZaferTurizm.DataAccess;
+using ZaferTurizm.Domain;
 using ZaferTurizm.DTOs;
+using ZaferTurizm.Business.Services.VehicleDefinitionManagers;
+using System.Diagnostics;
+using ZaferTurizm.Business.Validator;
 
 namespace ZaferTurizm.Business.Services.VehicleDefinitionManagers
 {
-    public class VehicleDefinitionService : IVehicleDefinitonService
+    public class VehicleDefinitionService : CrudService<VehicleDefinitonDto, VehicleDefinitonSummary, VehicleDefinition> , IVehicleDefinitionService
     {
-        private readonly TourDbContext _tourDbContext;
+        public VehicleDefinitionService(TourDbContext dbContext, GenericValidator<VehicleDefinition> validator)
+           : base(dbContext, validator)
+        { }
 
-        public VehicleDefinitionService(TourDbContext tourDbContext)
-        {
-            _tourDbContext = tourDbContext;
-        }
-
-
-
-        public CommandResult Create(VehicleDefinitonDto model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CommandResult Delete(VehicleDefinitonDto model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CommandResult Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<VehicleDefinitonDto> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<VehicleDefinitonSummary> GetAllSummaries()
-        {
-            try
+        protected override Expression<Func<VehicleDefinition, VehicleDefinitonDto>> DtoMapper =>
+            entity => new VehicleDefinitonDto()
             {
-                return _tourDbContext.VehicleDefinitions.Select(def => new VehicleDefinitonSummary()
-                {
-                    Id = def.Id,
-                    HasToilet = def.HasToilet,
-                    HasWifi = def.HasWifi,
-                    SeatCount = def.SeatCount,
-                    Year = def.Year,
-                    VehicleMakeName = def.VehicleModel.VehicleMake.Name,
-                    VehicleModelName = def.VehicleModel.Name
+                Id = entity.Id,
+                Year = entity.Year,
+                SeatCount = entity.SeatCount,
+                VehicleModelId = entity.VehicleModelId,
+                VehicleMakeId = entity.VehicleModel.VehicleMakeId,
+                HasWifi = entity.HasWifi,
+                HasToilet = entity.HasToilet
+            };
 
-
-                }).ToList();
-            }
-            catch (Exception ex)
+        protected override Expression<Func<VehicleDefinition, VehicleDefinitonSummary>> SummaryMapper =>
+            entity => new VehicleDefinitonSummary()
             {
-                Trace.TraceError(ex.ToString());
-                return Enumerable.Empty<VehicleDefinitonSummary>();
-            }
-        }
+                Id = entity.Id,
+                Year = entity.Year,
+                SeatCount = entity.SeatCount,
+                HasToilet = entity.HasToilet,
+                HasWifi = entity.HasWifi,
+                VehicleMakeName = entity.VehicleModel.VehicleMake.Name,
+                VehicleModelName = entity.VehicleModel.Name
+            };
 
-        public VehicleDefinitonDto? GetById(int id)
+        protected override VehicleDefinition MapToEntity(VehicleDefinitonDto dto)
         {
-            try
+            return new VehicleDefinition()
             {
-                return _tourDbContext.VehicleDefinitions.Select(model => new VehicleDefinitonDto()
-                {
-                    Id = model.Id,
-                    VehicleModelId=model.VehicleModelId,
-                    Year=model.Year,
-                    HasToilet=model.HasToilet,
-                    SeatCount=model.SeatCount,
-                    HasWifi=model.HasWifi,
-                    VehicleMakeId = model.VehicleModel.VehicleMakeId
-
-                }).SingleOrDefault(x => x.Id == id);
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError(ex.ToString());
-                return null;
-            }
-        }
-
-      
-
-        public CommandResult Update(VehicleDefinitonDto model)
-        {
-            throw new NotImplementedException();
+                Id = dto.Id,
+                Year = dto.Year,
+                SeatCount = dto.SeatCount,
+                VehicleModelId = dto.VehicleModelId,
+                HasWifi = dto.HasWifi,
+                HasToilet = dto.HasToilet
+            };
         }
     }
-
-
-
-
-
 }

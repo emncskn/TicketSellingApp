@@ -14,7 +14,14 @@ namespace ZaferTurizm.DataAccess
         public DbSet<VehicleMake> VehicleMakes { get; set; }
         public DbSet<VehicleModel> VehicleModels { get; set; }
         public DbSet<VehicleDefinition> VehicleDefinitions { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Route> Routes { get; set; }
+        public DbSet<BusScedhule> BusScedhules { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+      
+
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,6 +31,12 @@ namespace ZaferTurizm.DataAccess
             modelBuilder.ApplyConfiguration(new VehicleDefinitionConfiguration());
             modelBuilder.ApplyConfiguration(new VehicleDefinitionSeedData());
             modelBuilder.ApplyConfiguration(new VehicleConfiguration());
+            modelBuilder.ApplyConfiguration(new RouteConfiguration());
+            modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new PassengerConfiguration());
+            modelBuilder.ApplyConfiguration(new BusScedhuleConfig());
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
+           
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZaferTurizm.Domain
 {
-    public class Vehicle
+    public class Vehicle : IEntity
     {
         public int Id { get; set; }
         public string PlateNumber { get; set; }

@@ -10,12 +10,11 @@ namespace ZaferTurizm.DTOs
     {
         public int Id { get; set; }
         public string PlateNumber { get; set; }
+
         public string VehicleMakeName { get; set; }
         public string VehicleModelName { get; set; }
-        public int VehicleSeatCount { get; set; }
-        public string VehicleWifiStatus { get; set; }
-        public string VehicleToiletStatus { get; set; }
-        public string VehicleYear { get; set; }
-        
+
+        public string Description
+            => string.Concat(PlateNumber, " - ", VehicleMakeName, " ", VehicleModelName);
     }
 }

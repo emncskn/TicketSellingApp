@@ -12,7 +12,7 @@ namespace ZaferTurizm.Business
         private const string DefaultSuccessMessage = "İşlem başarılı";
         private const string DefaultFailureMessage = "İşlem başarısız";
 
-        //
+        
         public bool IsSuccess { get;private set; }
         public string Message { get;private set; }
 

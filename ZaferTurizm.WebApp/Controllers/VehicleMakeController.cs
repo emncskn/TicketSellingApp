@@ -104,7 +104,7 @@ namespace ZaferTurizm.WebApp.Controllers
             }
             else
             {
-                return Ok();        
+                return Json(result.Message);
             }
             
         }

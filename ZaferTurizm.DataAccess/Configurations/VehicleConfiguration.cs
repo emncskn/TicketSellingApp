@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using ZaferTurizm.DataAccess.SeedData;
 using ZaferTurizm.Domain;
 
 namespace ZaferTurizm.DataAccess.Configurations
@@ -21,6 +22,12 @@ namespace ZaferTurizm.DataAccess.Configurations
                     .WithMany()
                     .HasForeignKey(x => x.VehicleDefinitionId)
                     .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasData(
+
+                VehicleData.Data01,
+                VehicleData.Data02, VehicleData.Data03
+                );
 
             
         }

@@ -3,7 +3,7 @@
 <h1>Yeni Araç Modeli</h1>
 <div class="row">
     <div class="col-12 col-sm-8 col-md-6">
-        <form method="post" asp-controller="VehicleDefinition" asp-action="Create">
+        <form method="post" action="/VehicleDefinition/Create">
             <div>
                 <label class="form-label">Marka Adı</label>
                 <select asp-items="(SelectList)ViewBag.MakeList" id="vehicle_makes" class="form-select w-100"></select>
@@ -13,6 +13,22 @@
                 <label class="form-label">Model Adı</label>
                 <select class="form-select w-100" asp-for=VehicleModelId ></select>
                 @*@Html.DropDownListFor(m=>m.Id,(SelectList)ViewBag.VehicleMakeList,new {@class="form-control"}) @*For yazınca modelden seçebiliyoruz modelden*@
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Yıl</label>
+                <input class="form-control" type="number" asp-for="Year" />
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Koltuk Sayısı</label>
+                <input class="form-control" type="number" asp-for="SeatCount" />
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Tuvalet</label>
+                <input class="checkbox" type="checkbox" asp-for="HasToilet" />
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Wifi</label>
+                <input class="checkbox" type="checkbox" asp-for="HasWifi" />
             </div>
             <div class="mt-2">
                 <button type="submit" class="btn btn-success">

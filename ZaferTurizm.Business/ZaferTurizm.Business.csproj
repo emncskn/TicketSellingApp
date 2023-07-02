@@ -11,8 +11,4 @@
     <ProjectReference Include="..\ZaferTurizm\ZaferTurizm.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\VehicleManagers\" />
-  </ItemGroup>
-
 </Project>

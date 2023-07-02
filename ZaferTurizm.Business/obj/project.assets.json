@@ -741,9 +741,6 @@
       "ZaferTurizm/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "ZaferTurizm.Domain": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/ZaferTurizm.dll": {}
         },
@@ -769,6 +766,9 @@
       "ZaferTurizm.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ZaferTurizm": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/ZaferTurizm.Domain.dll": {}
         },

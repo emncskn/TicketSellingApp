@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "ZaferTurizm/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ZaferTurizm.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ZaferTurizm.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ZaferTurizm/1.0.0": {
+      "type": "project",
+      "path": "../ZaferTurizm/ZaferTurizm.csproj",
+      "msbuildProject": "../ZaferTurizm/ZaferTurizm.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "ZaferTurizm >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Hakan\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj": {
+              "projectPath": "C:\\Users\\Hakan\\Documents\\TicketSellingApp\\ZaferTurizm\\ZaferTurizm.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

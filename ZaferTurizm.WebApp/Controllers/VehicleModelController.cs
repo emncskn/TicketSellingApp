@@ -46,7 +46,7 @@ namespace ZaferTurizm.WebApp.Controllers
         public IActionResult Index()
         {
             
-            return View(_vehicleModelService.GetAllSummaries());
+            return View(_vehicleModelService.GetSummaries());
         }
         public IActionResult Delete(int id) 
         {

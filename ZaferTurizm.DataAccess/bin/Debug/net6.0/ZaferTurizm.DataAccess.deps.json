@@ -485,7 +485,15 @@
           }
         }
       },
+      "ZaferTurizm/1.0.0": {
+        "runtime": {
+          "ZaferTurizm.dll": {}
+        }
+      },
       "ZaferTurizm.Domain/1.0.0": {
+        "dependencies": {
+          "ZaferTurizm": "1.0.0"
+        },
         "runtime": {
           "ZaferTurizm.Domain.dll": {}
         }
@@ -791,6 +799,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "ZaferTurizm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ZaferTurizm.Domain/1.0.0": {
       "type": "project",

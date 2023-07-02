@@ -14,7 +14,7 @@
                     <th>Marka Adı</th>
                     <th>Model Adı</th>
                     <th>Yılı</th>
-                    <th>Koltuk Numarası</th>
+                    <th>Koltuk Sayısı</th>
                     <th>Tuvalet</th>
                     <th>Wifi</th>
                 </tr>
@@ -32,9 +32,11 @@
                         <td>@item.HasWifiString</td>
                         <td>
                             <div class="btn-group">
-                                @*Bu yola Tag Helpers denir.. daha yaygın*@
-                                <a class="btn btn-danger" asp-controller="VehicleDefinition" asp-action="Delete" asp-route-id="@item.Id">Sil</a> @*İd benim parametre adım*@
 
+                                <form method="post" asp-controller="VehicleDefinition" asp-action="Delete" class="d-inline">
+                                <input type="hidden" name="Id" value="@item.Id" />
+                                <button class="btn btn-link" >Sil</button>
+                            </form>
                                 @*@Html.ActionLink("Sil","Delete","VehicleModel", new {id=item.Id}) --> Bu yol html helpers *@
                                 <a class="btn btn-warning d-inline-block ms-2" asp-controller="VehicleDefinition" asp-action="Edit" asp-route-id="@item.Id">Güncelle</a>
 

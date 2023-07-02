@@ -25,10 +25,10 @@
                             <a class="btn btn-link" asp-controller="VehicleMake" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
                         </td>
                         <td>
-                            <a class="btn btn-link" asp-controller="VehicleMake" asp-action="Delete" asp-route-id="@item.Id">Silme Mustaa</a>  @*Daha güzel yöntem*@
+                            
                             <form method="post" asp-controller="VehicleMake" asp-action="Delete" class="d-inline"> 
                                 <input type="hidden" name="Id" value="@item.Id" />
-                                <button class="btn btn-link" >Sil Emre Hoca</button>
+                                <button class="btn btn-link" >Sil</button>
                             </form>
                         </td>
                     </tr>

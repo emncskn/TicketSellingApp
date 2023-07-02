@@ -771,9 +771,22 @@
           }
         }
       },
+      "ZaferTurizm/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ZaferTurizm.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ZaferTurizm.dll": {}
+        }
+      },
       "ZaferTurizm.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ZaferTurizm": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/ZaferTurizm.Domain.dll": {}
         },
@@ -1976,6 +1989,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ZaferTurizm/1.0.0": {
+      "type": "project",
+      "path": "../ZaferTurizm/ZaferTurizm.csproj",
+      "msbuildProject": "../ZaferTurizm/ZaferTurizm.csproj"
     },
     "ZaferTurizm.Domain/1.0.0": {
       "type": "project",

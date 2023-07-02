@@ -37,11 +37,14 @@ C:\Users\Mustafa\Desktop\06.06\ZaferTurizm\ZaferTurizm.Domain\obj\Debug\net6.0\r
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\bin\Debug\net6.0\ZaferTurizm.Domain.deps.json
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\bin\Debug\net6.0\ZaferTurizm.Domain.dll
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\bin\Debug\net6.0\ZaferTurizm.Domain.pdb
+C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\bin\Debug\net6.0\ZaferTurizm.dll
+C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\bin\Debug\net6.0\ZaferTurizm.pdb
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.csproj.AssemblyReference.cache
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.AssemblyInfoInputs.cache
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.AssemblyInfo.cs
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.csproj.CopyComplete
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.dll
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\refint\ZaferTurizm.Domain.dll
 C:\Users\Hakan\Documents\TicketSellingApp\ZaferTurizm.Domain\obj\Debug\net6.0\ZaferTurizm.Domain.pdb

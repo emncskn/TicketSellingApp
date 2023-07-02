@@ -3,7 +3,7 @@
 <h1>Araç Tanımı Güncelleme</h1>
 <div class="row">
     <div class="col-12 col-sm-8 col-md-6">
-        <form method="post" asp-controller="VehicleDefinition" asp-action="Edit">
+        <form method="post" action="/VehicleDefinition/Edit">
             
             <input type="hidden" asp-for="Id" />
             <div>
@@ -15,6 +15,22 @@
                 <label class="form-label">Model Adı</label>
                 <select asp-for="VehicleModelId" class="form-select w-100" asp-items="(SelectList)ViewBag.VehicleModelSelectList" asp-for=VehicleModelId></select>
                 @*@Html.DropDownListFor(m=>m.Id,(SelectList)ViewBag.VehicleMakeList,new {@class="form-control"}) @*For yazınca modelden seçebiliyoruz modelden*@
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Yıl</label>
+                @Html.TextBoxFor(vd=>vd.Year, new{@class="form-control",@type="number"})
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Koltuk Sayısı</label>
+                @Html.TextBoxFor(vd=>vd.SeatCount, new{@class="form-control" ,@type="number"})
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Tuvalet</label>
+                @Html.EditorFor(vd=>vd.HasToilet, new{@class="form-control"})
+            </div>
+            <div class="mt-2">
+                <label class="form-label">Wifi</label>
+                @Html.EditorFor(vd => vd.HasWifi, new{@class="form-control"})
             </div>
             <div class="mt-2">
                 <button type="submit" class="btn btn-success">

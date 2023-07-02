@@ -464,9 +464,6 @@
         }
       },
       "ZaferTurizm/1.0.0": {
-        "dependencies": {
-          "ZaferTurizm.Domain": "1.0.0"
-        },
         "runtime": {
           "ZaferTurizm.dll": {}
         }
@@ -482,6 +479,9 @@
         }
       },
       "ZaferTurizm.Domain/1.0.0": {
+        "dependencies": {
+          "ZaferTurizm": "1.0.0"
+        },
         "runtime": {
           "ZaferTurizm.Domain.dll": {}
         }

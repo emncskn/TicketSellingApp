@@ -18,7 +18,7 @@ namespace ZaferTurizm.DTOs
         {
             get
             {
-                return HasToilet ? "Var" : "Yok";
+                return HasWifi ? "Var" : "Yok";
             }
         }
         public string VehicleModelName { get; set; }
